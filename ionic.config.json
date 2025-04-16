@@ -1,0 +1,7 @@
+{
+  "name": "Biometrisch Toegangssysteem Interface",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
