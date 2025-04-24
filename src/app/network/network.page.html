@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card class="rounded-10" >
+    <ion-card-content>
+      <div class="d-flex align-items-center">
+
+        <ion-icon
+          [name]="mqtt.status === 'connected' ? 'wifi' :
+                mqtt.status === 'connecting' ? 'sync' :
+                mqtt.status === 'error' ? 'warning' : 'wifi-outline'"
+          [color]="mqtt.status === 'connected' ? 'success' :
+                 mqtt.status === 'connecting' ? 'warning' :
+                 mqtt.status === 'error' ? 'danger' : 'medium'"
+          slot="start"
+          [class.rotating]="mqtt.status === 'connecting'"
+          class="font-size-2 mr-2"
+        ></ion-icon>
+
+        <div>
+          <div >Broker: {{mqtt.broker}}</div>
+          <div class="font-size-085 text-muted" >Status: {{mqtt.status}}</div>
+        </div>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="rounded-10">
+    <ion-card-header>
+        <span>Connected Clients</span>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div class="d-flex align-items-center my-2" *ngFor="let node of nodes" (click)="openNode(node.id)" >
+
+        <img height="50" class="mr-2" [src]="node.icon" >
+
+        <div>
+          <div >{{node.name}}</div>
+          <div class="font-size-085 text-muted" >Type: {{node.type}}</div>
+          <div class="font-size-085 text-muted" >ID: {{node.short_id}}</div>
+        </div>
+      </div>
+
+      <div class="text-center" *ngIf="!nodes.length" >
+        <span class="text-muted font-size-085" >No Clients Connected</span>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

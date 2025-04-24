@@ -8,9 +8,25 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'network',
+        loadChildren: () => import('../network/network.module').then(m => m.NetworkPageModule)
       },
+
+      {
+        path: 'devices/hub/add-user',
+        loadChildren: () => import('../devices/hub/add-user/add-user.module').then(m => m.AddUserPageModule)
+      },
+      {
+        path: 'devices/hub/:id',
+        loadChildren: () => import('../devices/hub/hub.module').then(m => m.HubPageModule)
+      },
+
+      {
+        path: 'devices/verification/:id',
+        loadChildren: () => import('../devices/verification/verification.module').then(m => m.VerificationPageModule)
+      },
+
+
       {
         path: 'tab2',
         loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
@@ -21,14 +37,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/network',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/network',
     pathMatch: 'full'
   }
 ];

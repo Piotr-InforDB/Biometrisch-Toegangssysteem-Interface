@@ -1,0 +1,18 @@
+<ion-card>
+  <ion-card-content>
+    <div class="d-flex align-items-center" *ngIf="node" >
+
+      <img height="50" class="mr-2" [src]="node.icon" >
+
+      <div>
+        <div >{{node.name}}</div>
+        <div class="font-size-085 text-muted" >Type: {{node.type}}</div>
+        <div class="font-size-085 text-muted" >ID: {{node.short_id}}</div>
+      </div>
+    </div>
+    <div *ngIf="!node" class="flex-center py-3" >
+      <ion-spinner></ion-spinner>
+    </div>
+
+  </ion-card-content>
+</ion-card>

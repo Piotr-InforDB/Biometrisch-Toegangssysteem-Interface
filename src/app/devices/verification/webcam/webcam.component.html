@@ -1,0 +1,41 @@
+<section class="my-2" >
+
+  <div class="p-2 font-size-08 flex-align" *ngIf="recognition" >
+
+    <div class="flex-align mr-2" >
+      <div class="dot-glow mx-2" [class.dot-glow-success]="recognition.face" [class.dot-glow-danger]="!recognition.face"></div>
+      <div>Face found</div>
+    </div>
+    <div class="flex-align mx-2" >
+      <div class="dot-glow mx-2" [class.dot-glow-success]="recognition.recognized" [class.dot-glow-danger]="!recognition.recognized"></div>
+      <div>Face recognized</div>
+    </div>
+
+  </div>
+
+  <ion-card class="position-relative" >
+    <img [src]="image" *ngIf="image" class="w-100 h-auto rounded-10" alt="Webcam feed">
+    <div *ngIf="!image" class="w-100 h-px-100 flex-center" >
+      <ion-spinner></ion-spinner>
+    </div>
+  </ion-card>
+
+  <ion-card *ngIf="recognition && recognition.user" >
+    <ion-card-content>
+      <div class="d-flex align-items-center">
+
+        <div class="w-px-50 h-px-50 shadow rounded-10 bg-img-center mr-3"
+             [style.background-image]="'url('+recognition.user.preview+')'">
+        </div>
+
+        <div>
+          <div class="font-size-12" >{{recognition.user.name}}</div>
+          <div class="font-size-085 text-muted" >ID: {{recognition.user.id}}</div>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</section>

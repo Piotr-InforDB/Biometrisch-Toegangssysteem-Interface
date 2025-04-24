@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="helpers.back()" > <ion-icon name="caret-back" ></ion-icon> Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <app-device-card *ngIf="id" [id]="id" ></app-device-card>
+
+  <ion-card *ngIf="id" >
+
+    <ion-card-header>
+      <ion-card-title class="flex-between" >
+        <div>Facial Recognition Users</div>
+        <a class="btn btn-sm" (click)="addUser()" >ADD <ion-icon name="add-outline"></ion-icon> </a>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="flex-align overflow-auto" *ngIf="users.length" >
+
+        <div class="w-px-75 min-w-75 overflow-hidden  mx-1" *ngFor="let user of users" >
+          <div class="w-px-75 h-px-75 shadow rounded-circle bg-img-center"
+               [style.background-image]="'url('+user.preview+')'">
+          </div>
+          <div class="ion-text-center font-size-08 text-muted my-1" >{{user.name}}</div>
+        </div>
+
+      </div>
+      <div *ngIf="!users.length" class="py-2 text-muted ion-text-center" >No users found</div>
+    </ion-card-content>
+
+  </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,12 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="helpers.back()" > <ion-icon name="caret-back" ></ion-icon> Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <app-device-card *ngIf="id" [id]="id" ></app-device-card>
+  <app-webcam></app-webcam>
+
+</ion-content>

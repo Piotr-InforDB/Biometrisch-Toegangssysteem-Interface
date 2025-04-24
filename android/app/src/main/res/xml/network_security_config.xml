@@ -1,0 +1,14 @@
+<network-security-config>
+  <base-config cleartextTrafficPermitted="true">
+    <trust-anchors>
+      <certificates src="@raw/mqttcert" />
+      <certificates src="system" />
+    </trust-anchors>
+  </base-config>
+
+  
+  <!-- Add this block below the base-config -->
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="true">accesscontrol.home</domain>
+  </domain-config>
+</network-security-config>

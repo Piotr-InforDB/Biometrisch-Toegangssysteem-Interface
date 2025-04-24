@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="helpers.back()" > <ion-icon name="caret-back" ></ion-icon> Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>User Info</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-input
+          [(ngModel)]="name"
+          label="Name"
+          label-placement="floating"
+          class="custom-input">
+        </ion-input>
+      </ion-item>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Face Images</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="flex-align overflow-auto my-2">
+
+        <div class="border w-px-75 h-px-75 min-w-75 border rounded-10 bg-img-center mx-1"
+             [style.background-image]="'url(data:image/jpeg;base64,' + image.base64String + ')'"
+             *ngFor="let image of images" >
+        </div>
+
+        <div class="border w-px-75 h-px-75 min-w-75 border border-2 border-dashed rounded-10 flex-center mx-1" (click)="selectUserImage()" >
+          <ion-icon class="font-size-15" name="add-outline"></ion-icon>
+        </div>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="my-4 ion-text-center"  >
+    <a class="btn btn-inverse-success" *ngIf="!loading" (click)="save()" >SAVE</a>
+    <ion-spinner *ngIf="loading" ></ion-spinner>
+  </div>
+
+</ion-content>
